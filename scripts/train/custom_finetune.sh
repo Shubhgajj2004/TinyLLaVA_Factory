@@ -1,7 +1,7 @@
-DATA_PATH="/home/ai/data/llava/dataset/text_files/llava_v1_5_mix665k.json"
-IMAGE_PATH="/home/ai/data/llava/dataset"
+DATA_PATH="/kaggle/working/formatted_data.json"
+IMAGE_PATH="/kaggle/working/pokemon"
 MODEL_MAX_LENGTH=3072
-OUTPUT_DIR="/mnt/data/sata/yinghu/checkpoints/llava_factory/custom-finetune-TinyLLaVA-OpenELM-450M-SigLIP-0.89B"
+OUTPUT_DIR="/mnt/data/sata/shubh/checkpoints/llava_factory/custom-finetune-TinyLLaVA-OpenELM-450M-SigLIP-0.89B"
 
 deepspeed --include localhost:0,1 --master_port 29501 tinyllava/train/custom_finetune.py \
     --deepspeed ./scripts/zero2.json \
