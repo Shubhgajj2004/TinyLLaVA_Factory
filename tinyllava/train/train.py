@@ -85,7 +85,7 @@ def train():
                            **data_module)
     
     trainer.train()
-    
+    print("Saving for train...")
     training_recipe.save(model, trainer)
 
 if __name__ == "__main__":

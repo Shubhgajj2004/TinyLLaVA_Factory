@@ -85,6 +85,8 @@ class LoRATrainingRecipe(BaseTrainingRecipe):
             model.named_parameters(), self.training_arguments.lora_bias
         )
         if trainer.args.local_rank == 0 or trainer.args.local_rank == -1:
+            print("Saving pre-trained model...")
+            print(f'path is: {self.training_arguments.output_dir}')
             model.save_pretrained(self.training_arguments.output_dir, state_dict=lora_state_dict)
         
 
