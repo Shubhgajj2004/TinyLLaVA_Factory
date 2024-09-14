@@ -27,9 +27,11 @@ def train():
     training_recipe = TrainingRecipeFactory(training_arguments.training_recipe)(training_arguments) 
     load_settings(model_arguments, data_arguments, training_arguments)
     # load pretrained checkpoint
-    model = AutoModelForCausalLM.from_pretrained(training_arguments.pretrained_model_path, trust_remote_code=True)
+    hf_path = 'jiajunlong/TinyLLaVA-OpenELM-450M-SigLIP-0.89B'
+    model = AutoModelForCausalLM.from_pretrained(hf_path, trust_remote_code=True)
     config = model.config
-    tokenizer = AutoTokenizer.from_pretrained(training_arguments.pretrained_model_path, use_fast=False, model_max_length = config.tokenizer_model_max_length,padding_side = config.tokenizer_padding_side)
+    print(f"HF path is: {training_arguments.pretrained_model_path}")
+    tokenizer = AutoTokenizer.from_pretrained(hf_path, use_fast=False, model_max_length = config.tokenizer_model_max_length,padding_side = config.tokenizer_padding_side)
     model.tokenizer = tokenizer
     model = training_recipe(model)
     model.config.use_cache = False
