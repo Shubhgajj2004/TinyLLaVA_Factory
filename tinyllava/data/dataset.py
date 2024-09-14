@@ -60,6 +60,7 @@ class LazySupervisedDataset(Dataset):
         if 'image' in sources:
             image_file = self.list_data_dict[i]['image']
             image_folder = self.data_args.image_folder
+            print(f"Image folder: {image_folder}")
             image = Image.open(os.path.join(image_folder, image_file)).convert('RGB')
             image = self.image_preprocess(image)
             data_dict['image'] = image
