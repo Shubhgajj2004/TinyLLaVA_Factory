@@ -1,5 +1,5 @@
 DATA_PATH="/kaggle/working/formatted_data.json"
-IMAGE_PATH="/kaggle/working/pokemon"
+IMAGE_PATH="/kaggle/working/Amazon"
 MODEL_MAX_LENGTH=3072
 OUTPUT_DIR="/mnt/data/sata/shubh/checkpoints/llava_factory/custom-finetune-TinyLLaVA-OpenELM-450M-SigLIP-0.89B"
 
