@@ -1,7 +1,7 @@
 DATA_PATH="/home/ai/data/llava/dataset/text_files/llava_v1_5_mix665k.json"
 IMAGE_PATH="/home/ai/data/llava/dataset"
 MODEL_MAX_LENGTH=3072
-OUTPUT_DIR="/mnt/data/sata/yinghu/checkpoints/llava_factory/custom-finetune-TinyLLaVA-Phi-2-SigLIP-3.1B-lora"
+OUTPUT_DIR="/mnt/data/sata/yinghu/checkpoints/llava_factory/custom-finetune-TinyLLaVA-OpenELM-450M-SigLIP-0.89B"
 
 deepspeed --include localhost:0,1 --master_port 29501 tinyllava/train/custom_finetune.py \
     --deepspeed ./scripts/zero2.json \
@@ -20,7 +20,7 @@ deepspeed --include localhost:0,1 --master_port 29501 tinyllava/train/custom_fin
     --lora_r 128 \
     --lora_alpha 256 \
     --group_by_modality_length False \
-    --pretrained_model_path "tinyllava/TinyLLaVA-Phi-2-SigLIP-3.1B" \
+    --pretrained_model_path "jiajunlong/TinyLLaVA-OpenELM-450M-SigLIP-0.89B" \
     --output_dir $OUTPUT_DIR \
     --num_train_epochs 1 \
     --per_device_train_batch_size 4 \
@@ -42,4 +42,4 @@ deepspeed --include localhost:0,1 --master_port 29501 tinyllava/train/custom_fin
     --lazy_preprocess True \
     --report_to tensorboard \
     --tokenizer_use_fast False \
-    --run_name custom-finetune-TinyLLaVA-Phi-2-SigLIP-3.1B-lora
+    --run_name custom-finetune-TinyLLaVA-OpenELM-450M-SigLIP-0.89B
